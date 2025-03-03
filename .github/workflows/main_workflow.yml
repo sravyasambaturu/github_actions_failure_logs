@@ -1,0 +1,15 @@
+# .github/workflows/main_workflow.yml
+name: Main Workflow with Error
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_error_workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Error Workflow
+        uses: ./.github/workflows/error_workflows/error2.yml #Calls the workflow.

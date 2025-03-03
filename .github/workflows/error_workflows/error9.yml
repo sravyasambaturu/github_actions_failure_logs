@@ -1,0 +1,23 @@
+name: Cache Error
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create a file
+        run: echo "test content" > test.txt
+
+      - name: Cache the file
+        uses: actions/cache@v3
+        with:
+          path: test_nonexistent.txt #incorrect path
+          key: cache-key
+
+      - name: Read the file
+        run: cat test.txt
