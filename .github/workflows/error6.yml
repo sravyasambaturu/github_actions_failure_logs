@@ -1,0 +1,14 @@
+name: File Path Error
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Attempt to read a non-existent file
+        run: cat nonexistent.txt
