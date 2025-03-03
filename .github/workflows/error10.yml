@@ -1,0 +1,22 @@
+name: Service Container Error
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:invalid_tag #incorrect tag.
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Attempt to connect to Postgres (will fail)
+        run: |
+          sleep 10 # give the service some time to start (or attempt to)
+          psql -h localhost -U postgres -c "SELECT 1;"

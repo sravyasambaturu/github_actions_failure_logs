@@ -1,25 +1,25 @@
-name: Artifact Error
+# name: Artifact Error
 
 # on:
 #   push:
 #     branches:
 #       - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Create a file
-        run: echo "artifact content" > artifact.txt
+#     steps:
+#       - name: Create a file
+#         run: echo "artifact content" > artifact.txt
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: nonexistent_artifact.txt #incorrect path
+#       - name: Upload artifact
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: my-artifact
+#           path: nonexistent_artifact.txt #incorrect path
 
-      - name: Download artifact (will fail)
-        uses: actions/download-artifact@v3
-        with:
-          name: my-artifact
+#       - name: Download artifact (will fail)
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: my-artifact
