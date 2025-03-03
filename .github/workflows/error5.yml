@@ -1,4 +1,4 @@
-name: File Path Error
+name: Environment Variable Error
 
 on:
   push:
@@ -10,15 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Run script
-        run: python my_script.py
-      - name: Read non existent file
-        run: python -c "open('nonexistent.txt','r').read()" #file not created.
+      - name: Access missing environment variable
+        run: echo $MISSING_VARIABLE
