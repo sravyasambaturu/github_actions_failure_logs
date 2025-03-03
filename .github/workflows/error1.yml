@@ -1,0 +1,18 @@
+name: Workflow Example 1
+
+on: push
+
+jobs:
+  broken-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies (incorrect command)
+        run: pip install -r requirements.txt --invalid-flag
+      - name: Run script (script missing)
+        run: python missing_script.py
