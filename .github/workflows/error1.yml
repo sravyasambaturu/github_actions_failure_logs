@@ -1,6 +1,6 @@
 name: Workflow Example 1
 
-on: push
+# on: push
 
 jobs:
   broken-job:
