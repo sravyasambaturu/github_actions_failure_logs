@@ -18,7 +18,8 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Run script
-        run: python my_script.py
-      - name: Attempt to write to root
-        run: echo "test" > /root/test.txt # permission error
+      - name: Create a file
+        run: touch test.txt
+
+      - name: Attempt to write to a protected location
+        run: sudo chmod 400 test.txt && echo "test" >> test.txt #permission error
