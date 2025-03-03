@@ -1,0 +1,15 @@
+name: Wrong Shell
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Attempt to use PowerShell on Linux
+        shell: pwsh
+        run: Get-Date # PowerShell command on Linux
