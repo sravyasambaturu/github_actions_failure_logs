@@ -2,11 +2,12 @@
 
 name: Python CI
 
-# on: 
-#   push:
-#     branches:
-#       - main
-
+on:
+  workflow_run:
+    workflows: ["Main Workflow with Error"]
+    types:
+      - completed
+      
 jobs:
   build:
     runs-on: ubuntu-latest
