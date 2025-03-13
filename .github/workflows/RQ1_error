@@ -1,0 +1,44 @@
+name: Python Dependency Resolution Example
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  install_dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          # Try installing a specific version of the 'requests' package
+          pip install requests==2.25.1
+          
+      - name: Verify installation
+        run: |
+          # Check the installed version of 'requests'
+          pip show requests
+          
+      - name: Run tests (example)
+        run: |
+          # Placeholder step to simulate a test run
+          python -m unittest discover
+          
+      - name: Check for potential dependency issues
+        run: |
+          # Example for potential debugging message about dependency resolution
+          pip install -r requirements.txt
+          
+      - name: Final step
+        run: echo "Workflow completed with potential errors shown."
